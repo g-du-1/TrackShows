@@ -1,0 +1,12 @@
+.show-card {
+  background: $card-background;
+  display: inline-flex;
+  flex-direction: row;
+  padding: 1rem;
+}
+
+.show-card__content {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
