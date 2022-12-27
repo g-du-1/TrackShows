@@ -1,8 +1,8 @@
 version: '3.8'
 
 services:
-  server:
-    container_name: server
+  trackshows-server:
+    container_name: trackshows-server
     build: ./server
     ports:
       - ${DEBUG_PORT}:${DEBUG_PORT}
@@ -10,13 +10,13 @@ services:
     volumes:
       - ./:/app
     depends_on:
-      - db
+      - trackshows-db
     networks:
-      - spring-boot-app
+      - trackshows-app
     tty: true
     stdin_open: true
-  client:
-    container_name: client
+  trackshows-client:
+    container_name: trackshows-client
     build: ./client
     volumes:
       - /app/node_modules
@@ -26,18 +26,18 @@ services:
     ports:
       - ${CLIENT_PORT}:${CLIENT_PORT}
     networks:
-    - spring-boot-app
-  db:
-    container_name: postgres
+    - trackshows-app
+  trackshows-db:
+    container_name: trackshows-db
     image: postgres
     volumes:
-      - ./server/dbdata:/data/db
+      - ./server/db_data:/data/db
     networks:
-      - spring-boot-app
+      - trackshows-app
     environment:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     ports:
       - '5433:${DB_PORT}'
 networks:
-  spring-boot-app:
+  trackshows-app:

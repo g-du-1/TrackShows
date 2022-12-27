@@ -1,4 +1,4 @@
-# spring-boot-boilerplate
+# TrackShows
 
 ## Stack
 
@@ -10,10 +10,6 @@
 - Sass
 - eslint
 - jest
-
-## When creating a new project based on this
-
-- Change names in pom.xml and package.json
 
 ## Setup & starting the environment
 
@@ -34,12 +30,12 @@ Fix permissions in the WSL host:
 In separate terminals:
 
 1. `docker-compose up`
-2. `./filewatcher.sh ./server/src/ 'docker-compose restart server'` to watch for changes in src
-3. `docker exec -it --user node client bash` and run `npm run dev` from inside the container
+2. `./filewatcher.sh ./server/src/ 'docker-compose restart trackshows-server'` to watch for changes in src
+3. `docker exec -it --user node trackshows-client bash` and run `npm run dev` from inside the container
 
 Copy node_modules to host to get IDE features (also needed after installing new packages):
 
-1. `sudo docker cp client:/app/node_modules ./client`
+1. `sudo docker cp trackshows-client:/app/node_modules ./client`
 
 Fix permissions in the host for running tests from the IDE:
 
@@ -85,11 +81,11 @@ Debug tests directly from IntelliJ.
 
 ## Installing node modules inside the container
 
-`docker exec -it --user root client bash`
+`docker exec -it --user root trackshows-client bash`
 
 ## Running node commands inside the container
 
-`docker exec -it --user node client bash`
+`docker exec -it --user node trackshows-client bash`
 
 ## Running front end tests
 

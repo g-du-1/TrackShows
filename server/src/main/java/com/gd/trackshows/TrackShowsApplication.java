@@ -1,4 +1,4 @@
-package com.gd.springbootboilerplate;
+package com.gd.trackshows;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @SpringBootApplication
-public class SpringBootBoilerplateApplication {
+public class TrackShowsApplication {
 	public String testFn() {
 		return "Test";
 	}
@@ -19,7 +19,7 @@ public class SpringBootBoilerplateApplication {
 		return "Hello World!";
 	}
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootBoilerplateApplication.class, args);
+		SpringApplication.run(TrackShowsApplication.class, args);
 	}
 
 }
