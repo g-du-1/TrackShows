@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  server:
+    container_name: server
+    build: ./server
+    ports:
+      - ${DEBUG_PORT}:${DEBUG_PORT}
+      - ${SERVER_PORT}:${SERVER_PORT}
+    volumes:
+      - ./:/app
+    depends_on:
+      - db
+    networks:
+      - spring-boot-app
+    tty: true
+    stdin_open: true
+  client:
+    container_name: client
+    build: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    tty: true
+    stdin_open: true
+    ports:
+      - ${CLIENT_PORT}:${CLIENT_PORT}
+    networks:
+    - spring-boot-app
+  db:
+    container_name: postgres
+    image: postgres
+    volumes:
+      - ./server/dbdata:/data/db
+    networks:
+      - spring-boot-app
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - '5433:${DB_PORT}'
+networks:
+  spring-boot-app:
