@@ -1,4 +1,4 @@
-package com.gd.trackshows.shared.auth.trakt;
+package com.gd.trackshows.api.trakt.auth;
 
 import com.gd.trackshows.shared.auth.OAuthInterface;
 import com.gd.trackshows.shared.auth.OAuthSessionInfo;
@@ -41,15 +41,16 @@ public class TraktAuthService implements OAuthInterface {
         return redirectView;
     }
 
-    public RedirectView authCallback(String code) {
+    public String authCallback(String code) {
         String tokenInSession = sessionInfo.getAccessToken();
 
         if (tokenInSession == null) {
             String accessToken = getAccessToken(code, clientID, clientSecret);
             sessionInfo.setAccessToken(accessToken);
+            return accessToken;
         }
 
-        return null;
+        return tokenInSession;
     }
 
     public String getAccessToken(String code, String clientID, String clientSecret) {

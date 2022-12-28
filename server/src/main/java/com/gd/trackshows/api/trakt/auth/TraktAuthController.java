@@ -1,5 +1,7 @@
-package com.gd.trackshows.shared.auth.trakt;
+package com.gd.trackshows.api.trakt.auth;
 
+import com.gd.trackshows.api.trakt.user.TraktUser;
+import com.gd.trackshows.api.trakt.user.TraktUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,10 +12,12 @@ import org.springframework.web.servlet.view.RedirectView;
 public class TraktAuthController {
 
     private final TraktAuthService traktAuthService;
+    private final TraktUserService traktUserService;
 
     @Autowired
-    public TraktAuthController(TraktAuthService traktAuthService) {
+    public TraktAuthController(TraktAuthService traktAuthService, TraktUserService traktUserService) {
         this.traktAuthService = traktAuthService;
+        this.traktUserService = traktUserService;
     }
 
     @RequestMapping("/api/v1/auth/trakt/")
@@ -22,8 +26,10 @@ public class TraktAuthController {
     }
 
     @RequestMapping("/api/v1/auth/trakt/callback")
-    public RedirectView authCallback(@RequestParam(name = "code") String code) {
-        return traktAuthService.authCallback(code);
+    public String authCallback(@RequestParam(name = "code") String code) {
+        String token = traktAuthService.authCallback(code);
+        TraktUser user = traktUserService.getUser(token);
+        return user.getUsername();
     }
 
 }

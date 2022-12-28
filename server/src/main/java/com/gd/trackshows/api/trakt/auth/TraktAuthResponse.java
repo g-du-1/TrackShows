@@ -1,4 +1,4 @@
-package com.gd.trackshows.shared.auth.trakt;
+package com.gd.trackshows.api.trakt.auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
