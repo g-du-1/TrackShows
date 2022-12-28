@@ -1,6 +1,7 @@
 package com.gd.trackshows.shared.auth.trakt;
 
 import com.gd.trackshows.shared.auth.OAuthInterface;
+import com.gd.trackshows.shared.auth.OAuthSessionInfo;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -24,8 +25,11 @@ public class TraktAuthService implements OAuthInterface {
 
     private final RestTemplate restTemplate;
 
-    public TraktAuthService(RestTemplateBuilder restTemplateBuilder) {
+    private final OAuthSessionInfo sessionInfo;
+
+    public TraktAuthService(RestTemplateBuilder restTemplateBuilder, OAuthSessionInfo oAuthSessionInfo) {
         this.restTemplate = restTemplateBuilder.build();
+        this.sessionInfo = oAuthSessionInfo;
     }
 
     public RedirectView initLogin() {
@@ -38,8 +42,13 @@ public class TraktAuthService implements OAuthInterface {
     }
 
     public RedirectView authCallback(String code) {
-        String accessToken = getAccessToken(code, clientID, clientSecret);
-        System.out.println(accessToken);
+        String tokenInSession = sessionInfo.getAccessToken();
+
+        if (tokenInSession == null) {
+            String accessToken = getAccessToken(code, clientID, clientSecret);
+            sessionInfo.setAccessToken(accessToken);
+        }
+
         return null;
     }
 
