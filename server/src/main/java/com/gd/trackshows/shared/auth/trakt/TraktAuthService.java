@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class TraktAuthService implements OAuthInterface, TraktAuthInterface {
+public class TraktAuthService implements OAuthInterface {
 
     private final String clientID = System.getenv("TRAKT_CLIENT_ID");
     private final String clientSecret = System.getenv("TRAKT_CLIENT_SECRET");
