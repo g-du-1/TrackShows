@@ -18,6 +18,7 @@ services:
       - TRAKT_CLIENT_SECRET=${TRAKT_CLIENT_SECRET}
       - TRAKT_REDIR_URL=${TRAKT_REDIR_URL}
       - TRAKT_LOGIN_URL=${TRAKT_LOGIN_URL}
+      - TRAKT_TOKEN_URL=${TRAKT_TOKEN_URL}
     tty: true
     stdin_open: true
   trackshows-client:
