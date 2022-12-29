@@ -20,12 +20,12 @@ public class TraktAuthController {
         this.traktUserService = traktUserService;
     }
 
-    @RequestMapping("/api/v1/auth/trakt/")
+    @RequestMapping("/api/v1/trakt/auth")
     public RedirectView initLogin() {
         return traktAuthService.initLogin();
     }
 
-    @RequestMapping("/api/v1/auth/trakt/callback")
+    @RequestMapping("/api/v1/trakt/auth/callback")
     public String authCallback(@RequestParam(name = "code") String code) {
         String token = traktAuthService.authCallback(code);
         TraktUser user = traktUserService.getUser(token);
