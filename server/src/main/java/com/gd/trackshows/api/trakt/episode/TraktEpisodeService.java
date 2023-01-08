@@ -24,6 +24,7 @@ public class TraktEpisodeService implements ApiEpisodeInterface<TraktEpisode> {
         this.restTemplate = restTemplateBuilder.build();
     }
 
+    @Override
     public TraktEpisode getEpisode(String id, String season, String episode) {
         String tokenInSession = sessionInfo.getAccessToken();
 

@@ -19,6 +19,7 @@ public class TraktUserService implements ApiUserInterface<TraktUser> {
         this.restTemplate = restTemplateBuilder.build();
     }
 
+    @Override
     public TraktUser getUser(String token) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

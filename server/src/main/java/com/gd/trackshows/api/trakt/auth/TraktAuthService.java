@@ -32,6 +32,7 @@ public class TraktAuthService implements OAuthInterface {
         this.sessionInfo = oAuthSessionInfo;
     }
 
+    @Override
     public RedirectView initLogin() {
         String idReplacedURL = loginURL.replace("${TRAKT_CLIENT_ID}", clientID);
         String URL = idReplacedURL.replace("${TRAKT_REDIR_URL}", redirURL);
@@ -41,6 +42,7 @@ public class TraktAuthService implements OAuthInterface {
         return redirectView;
     }
 
+    @Override
     public String authCallback(String code) {
         String tokenInSession = sessionInfo.getAccessToken();
 
@@ -53,6 +55,7 @@ public class TraktAuthService implements OAuthInterface {
         return tokenInSession;
     }
 
+    @Override
     public String getAccessToken(String code, String clientID, String clientSecret) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
