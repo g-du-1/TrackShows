@@ -95,6 +95,10 @@ Debug tests directly from IntelliJ.
 
 ![db.png](docs/db.png)
 
+## IntelliJ Testing with environment variables
+
+![env-vars-testing.png](docs/env-vars-testing.png)
+
 ## Fixes for issues
 
 - Open project from explorer via context menu instead of from IntelliJ
