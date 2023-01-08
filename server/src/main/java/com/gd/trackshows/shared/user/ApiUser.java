@@ -1,5 +1,5 @@
 package com.gd.trackshows.shared.user;
 
-public interface ApiUserInterface<T> {
+public interface ApiUser<T> {
     T getUser(String token);
 }

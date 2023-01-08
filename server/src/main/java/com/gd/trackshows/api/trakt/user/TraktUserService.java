@@ -1,6 +1,6 @@
 package com.gd.trackshows.api.trakt.user;
 
-import com.gd.trackshows.shared.user.ApiUserInterface;
+import com.gd.trackshows.shared.user.ApiUser;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class TraktUserService implements ApiUserInterface<TraktUser> {
+public class TraktUserService implements ApiUser<TraktUser> {
     private final String clientID = System.getenv("TRAKT_CLIENT_ID");
 
     private final RestTemplate restTemplate;

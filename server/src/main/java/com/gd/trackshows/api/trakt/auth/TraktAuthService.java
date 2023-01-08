@@ -1,6 +1,6 @@
 package com.gd.trackshows.api.trakt.auth;
 
-import com.gd.trackshows.shared.auth.OAuthInterface;
+import com.gd.trackshows.shared.auth.OAuth;
 import com.gd.trackshows.shared.auth.OAuthSessionInfo;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class TraktAuthService implements OAuthInterface {
+public class TraktAuthService implements OAuth {
 
     private final String clientID = System.getenv("TRAKT_CLIENT_ID");
     private final String clientSecret = System.getenv("TRAKT_CLIENT_SECRET");

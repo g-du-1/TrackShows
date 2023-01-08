@@ -1,7 +1,7 @@
 package com.gd.trackshows.api.trakt.episode;
 
 import com.gd.trackshows.shared.auth.OAuthSessionInfo;
-import com.gd.trackshows.shared.episode.ApiEpisodeInterface;
+import com.gd.trackshows.shared.episode.ApiEpisode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class TraktEpisodeService implements ApiEpisodeInterface<TraktEpisode> {
+public class TraktEpisodeService implements ApiEpisode<TraktEpisode> {
     private final String clientID = System.getenv("TRAKT_CLIENT_ID");
 
     private final OAuthSessionInfo sessionInfo;
